@@ -15,6 +15,7 @@ import { loginUser, apiError } from '../../store/actions';
 // import images
 import profile from "../../assets/images/profile-img.png";
 import logo from "../../assets/images/logo.svg";
+const axios = require('axios');
 
 class Login extends Component {
 
@@ -26,9 +27,28 @@ class Login extends Component {
         this.handleValidSubmit = this.handleValidSubmit.bind(this);
     }
 
+
+    login(values) {
+        axios.post('http://api.vidhikaar.com/api/V1/Authentication/Login', {
+            userName: values.email,
+            password: values.password
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
     // handleValidSubmit
     handleValidSubmit(event, values) {
-        this.props.loginUser(values, this.props.history);
+        console.log("hellooo", values.email)
+        this.login(values);
+    }
+
+    setValue() {
+        console.log("hello")
     }
 
     componentDidMount() {
