@@ -1,5 +1,4 @@
-import axios from 'axios';
-
+import axios from "axios";
 
 // Gets the logged in user data from local session 
 const getLoggedInUser = () => {
@@ -22,7 +21,7 @@ const postRegister = (url, data) => {
         throw response.data;
     }).catch(err => {
         var message;
-        if (err.response && err.response.status ) {
+        if (err.response && err.response.status) {
             switch (err.response.status) {
                 case 404: message = "Sorry! the page you are looking for could not be found"; break;
                 case 500: message = "Sorry! something went wrong, please contact our support team"; break;
@@ -37,13 +36,32 @@ const postRegister = (url, data) => {
 
 // Login Method
 const postLogin = (url, data) => {
-    return axios.post(url, data).then(response => {
-        if (response.status === 400 || response.status === 500)
-            throw response.data;
-        return response.data;
-    }).catch(err => {
-        throw err[1];
-    });
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    };
+
+    const headers = {
+        'Content-Type': 'application/json',
+    }
+
+    return axios.post(url, { data }, {
+        headers: headers
+    })
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+        }).catch(err => {
+            console.log("error", err);
+            throw err[1];
+        });    // fetch(url, requestOptions)
+    //     .then(response => {
+    //         console.log("heyyyy", response)
+    //         if (response.status === 400 || response.status === 500)
+    //             throw response.data;
+    //         return response.data;
+    //     })
 }
 
 // postForgetPwd 

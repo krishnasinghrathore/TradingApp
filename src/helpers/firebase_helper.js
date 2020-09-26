@@ -3,6 +3,7 @@ import firebase from "firebase/app";
 // Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/firestore";
+const axios = require('axios');
 
 class FirebaseAuthBackend {
   constructor(firebaseConfig) {
@@ -43,17 +44,17 @@ class FirebaseAuthBackend {
    */
   loginUser = (email, password) => {
     return new Promise((resolve, reject) => {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(
-          user => {
-            resolve(firebase.auth().currentUser);
-          },
-          error => {
-            reject(this._handleError(error));
-          }
-        );
+
+      axios.post('http://api.vidhikaar.com/api/V1/Authentication/Login', {
+        userName: email,
+        password: password
+      })
+        .then(function (response) {
+          resolve(firebase.auth().currentUser);
+        })
+        .catch(function (error) {
+          reject(this._handleError(error));
+        });
     });
   };
 

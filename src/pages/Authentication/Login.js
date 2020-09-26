@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from "axios";
 
 import { Row, Col, CardBody, Card, Alert, Container } from "reactstrap";
 
@@ -15,7 +16,6 @@ import { loginUser, apiError } from '../../store/actions';
 // import images
 import profile from "../../assets/images/profile-img.png";
 import logo from "../../assets/images/logo.svg";
-const axios = require('axios');
 
 class Login extends Component {
 
@@ -29,26 +29,12 @@ class Login extends Component {
 
 
     login(values) {
-        axios.post('http://api.vidhikaar.com/api/V1/Authentication/Login', {
-            userName: values.email,
-            password: values.password
-        })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        this.props.loginUser({ userName: values.username, password: values.password }, this.props.history)
     }
 
     // handleValidSubmit
     handleValidSubmit(event, values) {
-        console.log("hellooo", values.email)
         this.login(values);
-    }
-
-    setValue() {
-        console.log("hello")
     }
 
     componentDidMount() {
@@ -98,11 +84,11 @@ class Login extends Component {
                                                 {this.props.error && this.props.error ? <Alert color="danger">{this.props.error}</Alert> : null}
 
                                                 <div className="form-group">
-                                                    <AvField name="email" label="Email" value="admin@themesbrand.com" className="form-control" placeholder="Enter email" type="email" required />
+                                                    <AvField name="username" label="Username" value="" className="form-control" placeholder="Enter username" type="text" required />
                                                 </div>
 
                                                 <div className="form-group">
-                                                    <AvField name="password" label="Password" value="123456" type="password" required placeholder="Enter Password" />
+                                                    <AvField name="password" label="Password" value="" type="password" required placeholder="Enter Password" />
                                                 </div>
 
                                                 <div className="custom-control custom-checkbox">
