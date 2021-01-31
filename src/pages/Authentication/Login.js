@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from "axios";
 
 import { Row, Col, CardBody, Card, Alert, Container } from "reactstrap";
 
@@ -29,6 +28,7 @@ class Login extends Component {
 
 
     login(values) {
+        debugger;
         this.props.loginUser({ userName: values.username, password: values.password }, this.props.history)
     }
 

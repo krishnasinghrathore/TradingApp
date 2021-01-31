@@ -148,6 +148,7 @@ class Navbar extends Component {
                                                    {this.props.t(' Ecommerce')} <div className="arrow-down"></div>
                                                 </Link>
                                                 <div className={classname("dropdown-menu", { show: this.state.ecommerceState })}>
+                                                    {/* <Link to="ecommerce-products" className="dropdown-item">{this.props.t('Product Category')}</Link> */}
                                                     <Link to="ecommerce-products" className="dropdown-item">{this.props.t('Products')}</Link>
                                                     <Link to="ecommerce-product-detail" className="dropdown-item">{this.props.t('Product Detail')}</Link>
                                                     <Link to="ecommerce-orders" className="dropdown-item">{this.props.t('Orders')}</Link>

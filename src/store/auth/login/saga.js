@@ -19,6 +19,7 @@ function* loginUser({ payload: { user, history } }) {
         }
         else {
             console.log(user)
+            debugger;
             const response = yield call(post, API_URL.baseUrl + API_URL.loginEndPoint, { userName: user.userName, password: user.password });
             if (response.data) {
                 sessionStorage.setItem("authUser", JSON.stringify(response));

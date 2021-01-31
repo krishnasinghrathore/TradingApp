@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Row, Col, CardBody, Card, Alert,Container } from "reactstrap";
+import { Row, Col, CardBody, Card, Alert, Container } from "reactstrap";
 
 // availity-reactstrap-validation
 import { AvForm, AvField } from "availity-reactstrap-validation";
 
 // action
-import { registerUser,apiError,registerUserFailed } from "../../store/actions";
+import { registerUser, apiError, registerUserFailed } from "../../store/actions";
 
 // Redux
 import { connect } from "react-redux";
@@ -29,11 +29,10 @@ class Register extends Component {
     this.props.registerUser(values);
   }
 
-    componentDidMount()
-    {
-        this.props.apiError("");
-        this.props.registerUserFailed("");
-    }
+  componentDidMount() {
+    this.props.apiError("");
+    this.props.registerUserFailed("");
+  }
 
   render() {
     return (
@@ -174,4 +173,4 @@ const mapStatetoProps = state => {
   return { user, registrationError, loading };
 };
 
-export default connect(mapStatetoProps, { registerUser,apiError,registerUserFailed })(Register);
+export default connect(mapStatetoProps, { registerUser, apiError, registerUserFailed })(Register);

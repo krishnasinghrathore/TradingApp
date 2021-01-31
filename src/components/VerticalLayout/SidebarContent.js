@@ -111,6 +111,7 @@ class SidebarContent extends Component {
                             <span>{this.props.t('Ecommerce') }</span>
                         </Link>
                         <ul className="sub-menu" aria-expanded="false">
+                            <li><Link to="ecommerce-product-category">{this.props.t('Product Category') }</Link></li>
                             <li><Link to="#">{this.props.t('Products') }</Link></li>
                             <li><Link to="#-detail">{this.props.t('Product Detail') }</Link></li>
                             <li><Link to="#">{this.props.t('Orders') }</Link></li>

@@ -10,9 +10,18 @@ import ForgetPwd from "../pages/Authentication/ForgetPassword";
   // Dashboard
 import Dashboard from "../pages/Dashboard/index";
 
+// ECommerce 
+import ProductCategoryPage from "../pages/ECommerce/ProductCategory";
+import AddProductCategory from "../pages/ECommerce/AddProductCategory";
+
 const authProtectedRoutes = [
 
 	{ path: "/dashboard", component: Dashboard },
+
+	//Ecommerce
+	{ path: "/ecommerce-product-category", component: ProductCategoryPage },
+	{ path: "/ecommerce-add-product", component: AddProductCategory },
+
 
 	// this route should be at the end of all other routes
 	{ path: "/", exact: true, component: () => <Redirect to="/dashboard" /> }
